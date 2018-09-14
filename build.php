@@ -23,3 +23,23 @@ return [
     ],
     // 其他更多的模块定义
 ];
+function get_user_page(){
+    public $user_id = $_POST['user_id'];
+    public $user_name = $_POST['user_name'];
+    //按照仓库会员id查询仓库名称
+    if(isset($POST['sub_id'])){
+        $sql="select store_name from ".$GLOAD['ecs']." WHERE store_id='".$sub_id."' ";
+        $result = $db->getAll($sql);
+        foreach( $result AS $key => $val ){
+            
+            $result[$key]['oreder_id']=$GLOAS['db']->getOne("select order_id from ".$GLOAS['ecs']->table('order_info')." where store-id
+            = '".$val['store_id']."' ");
+        
+        } 
+    
+    }
+    
+    return $result;
+
+
+}
